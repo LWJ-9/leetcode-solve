@@ -6,7 +6,7 @@
 
 // Note that you must do this in-place without making a copy of the array.
 
- 
+
 
 // Example 1:
 
@@ -16,13 +16,13 @@
 
 // Input: nums = [0]
 // Output: [0]
- 
+
 
 // Constraints:
 
 // 1 <= nums.length <= 104
 // -231 <= nums[i] <= 231 - 1
- 
+
 
 // Follow up: Could you minimize the total number of operations done?
 // Accepted
@@ -39,6 +39,29 @@
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
- var moveZeroes = function(nums) {
-    
+var moveZeroes = function (nums) {
+	let cursorIndex = 0;
+	let zeroIndex = -1;
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] == 0) {
+			zeroIndex = i;
+			break;
+		}
+	}
+	if (zeroIndex == -1) {
+		return nums;
+	}
+	while (nums[cursorIndex] !== undefined) {
+
+		if (nums[cursorIndex] !== 0 && cursorIndex > zeroIndex) {
+			nums[zeroIndex] = nums[cursorIndex];
+			nums[cursorIndex] = 0;
+			zeroIndex++;
+		}
+		cursorIndex++;
+	}
+	return nums;
 };
+
+//[0,1,0,3,12]
+//console.log(moveZeroes([0, 1, 0, 3, 12]));
