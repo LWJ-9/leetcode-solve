@@ -43,35 +43,29 @@ Submissions
 var searchInsert = function (nums, target) {
     let left = 0;
     let right = nums.length - 1;
-    let pivot;
-    while (left < right) {
-        pivot = Math.floor((left + right) / 2);
+    let pivot = -1;
+    while (left <= right) {
+        pivot = Math.floor((left + (right - left) / 2));
         if (target < nums[pivot]) {
-            right = pivot;
+            right = pivot - 1;
         } else if (nums[pivot] < target) {
             left = pivot + 1;
-        } else if (nums[pivot] === target) {
-            break;
+        } else {
+            return pivot;
         }
     }
-    pivot = Math.floor((left + right) / 2);
-    if (nums[pivot] >= target) {
-        return pivot;
-    }
-    if (nums[pivot] < target) {
-        return pivot + 1;
-    }
+    return right + 1;
 };
 
 console.log(searchInsert([1, 3, 5, 6], -8));
 
 /* 
-64 / 64 test cases passed.
-Status: Accepted
-Runtime: 85 ms
-Memory Usage: 42.3 MB
-
-Your runtime beats 37.32 % of javascript submissions.
-
-Your memory usage beats 38.86 % of javascript submissions.
+Success
+Details 
+Runtime: 63 ms, faster than 86.84% of JavaScript online submissions for Search Insert Position.
+Memory Usage: 42.2 MB, less than 62.65% of JavaScript online submissions for Search Insert Position.
+Next challenges:
+Coin Change 2
+Guess the Word
+Largest Subarray Length K
  */

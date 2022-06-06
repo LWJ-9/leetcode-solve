@@ -51,7 +51,7 @@ var moveZeroes = function (nums) {
 	}
 	if (zeroIndex == -1) {
 		return nums;
-	}
+	}//  TODO
 	while (nums[cursorIndex] !== undefined) {
 
 		if (nums[cursorIndex] !== 0 && cursorIndex > zeroIndex) {
